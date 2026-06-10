@@ -1,0 +1,129 @@
+<svg viewBox="0 0 920 640" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="920" height="640" fill="#f4f6fb" rx="12"/>
+
+  <!-- Title -->
+  <text x="460" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1a2340">Active Directory Lab 1 — Azure Architecture</text>
+  <text x="460" y="56" text-anchor="middle" font-size="12" fill="#5a6a8a">Domain: lab.local · OS: Windows Server 2025 Datacenter · Platform: Microsoft Azure</text>
+
+  <!-- ====== AZURE CLOUD BOUNDARY ====== -->
+  <rect x="20" y="72" width="880" height="330" rx="10" fill="#e8f0fe" stroke="#4285f4" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="36" y="94" font-size="13" font-weight="600" fill="#4285f4">☁  Microsoft Azure</text>
+
+  <!-- Resource Group box -->
+  <rect x="40" y="104" width="840" height="284" rx="8" fill="#dce8fd" stroke="#5a9cf5" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="58" y="122" font-size="11" font-weight="600" fill="#1a73e8">Resource Group: rg-lab01-0626</text>
+
+  <!-- VNet box -->
+  <rect x="60" y="132" width="500" height="240" rx="8" fill="#c8ddfb" stroke="#4285f4" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="78" y="150" font-size="11" font-weight="600" fill="#1a73e8">Virtual Network: dc01-vnet</text>
+
+  <!-- NSG badge inside vnet -->
+  <rect x="78" y="158" width="180" height="36" rx="6" fill="#ffffff" stroke="#ea4335" stroke-width="1.5"/>
+  <text x="88" y="172" font-size="10" font-weight="600" fill="#ea4335">🛡  NSG: dc01-nsg</text>
+  <text x="88" y="186" font-size="9" fill="#555">RDP TCP 3389 allowed</text>
+
+  <!-- VM box -->
+  <rect x="78" y="204" width="460" height="152" rx="8" fill="#ffffff" stroke="#34a853" stroke-width="2"/>
+  <!-- VM icon area -->
+  <rect x="78" y="204" width="460" height="30" rx="8" fill="#34a853"/>
+  <text x="308" y="224" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">🖥  Virtual Machine: dc01</text>
+
+  <!-- VM details -->
+  <text x="100" y="252" font-size="11" fill="#1a2340" font-weight="600">Role:</text>
+  <text x="148" y="252" font-size="11" fill="#444">Active Directory Domain Controller</text>
+  <text x="100" y="270" font-size="11" fill="#1a2340" font-weight="600">OS:</text>
+  <text x="148" y="270" font-size="11" fill="#444">Windows Server 2025 Datacenter</text>
+  <text x="100" y="288" font-size="11" fill="#1a2340" font-weight="600">Public IP:</text>
+  <text x="168" y="288" font-size="11" fill="#444">20.64.147.20</text>
+  <text x="100" y="306" font-size="11" fill="#1a2340" font-weight="600">Services:</text>
+  <text x="168" y="306" font-size="11" fill="#444">AD DS · DNS · GPMC</text>
+  <text x="100" y="324" font-size="11" fill="#1a2340" font-weight="600">Access:</text>
+  <text x="148" y="324" font-size="11" fill="#444">RDP (port 3389)</text>
+  <text x="100" y="342" font-size="11" fill="#1a2340" font-weight="600">Automation:</text>
+  <text x="188" y="342" font-size="11" fill="#444">deploy-ad.ps1 (PowerShell)</text>
+
+  <!-- Subscription badge -->
+  <rect x="590" y="132" width="270" height="60" rx="6" fill="#ffffff" stroke="#fbbc04" stroke-width="1.5"/>
+  <text x="608" y="152" font-size="11" font-weight="600" fill="#f9a825">📋  Subscription</text>
+  <text x="608" y="168" font-size="11" fill="#444">Azure subscription 1</text>
+  <text x="608" y="184" font-size="10" fill="#888">Deployment: 6/9/2026 9:52 PM</text>
+
+  <!-- Internet / Admin box -->
+  <rect x="590" y="208" width="270" height="60" rx="6" fill="#ffffff" stroke="#9c27b0" stroke-width="1.5"/>
+  <text x="608" y="228" font-size="11" font-weight="600" fill="#9c27b0">💻  Admin Workstation</text>
+  <text x="608" y="244" font-size="11" fill="#444">Remote Desktop (RDP)</text>
+  <text x="608" y="260" font-size="10" fill="#888">→ 20.64.147.20:3389</text>
+
+  <!-- Git / GitHub box -->
+  <rect x="590" y="284" width="270" height="52" rx="6" fill="#ffffff" stroke="#333" stroke-width="1.5"/>
+  <text x="608" y="304" font-size="11" font-weight="600" fill="#333">⚙  GitHub Repository</text>
+  <text x="608" y="320" font-size="10" fill="#555">sammathaadams/active-directory-lab1</text>
+  <text x="608" y="334" font-size="10" fill="#888">scripts/deploy-ad.ps1 · 144 insertions</text>
+
+  <!-- Arrow: Admin → VM -->
+  <line x1="590" y1="238" x2="542" y2="290" stroke="#9c27b0" stroke-width="1.5" marker-end="url(#arrowPurple)" stroke-dasharray="5,3"/>
+
+  <!-- ====== AD STRUCTURE ====== -->
+  <rect x="20" y="416" width="880" height="208" rx="10" fill="#e8f5e9" stroke="#34a853" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="36" y="438" font-size="13" font-weight="600" fill="#34a853">🏢  Active Directory — lab.local</text>
+
+  <!-- Domain root -->
+  <rect x="370" y="448" width="180" height="34" rx="6" fill="#34a853"/>
+  <text x="460" y="469" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">DC=lab,DC=local</text>
+
+  <!-- OU boxes row -->
+  <!-- IT OU -->
+  <rect x="60" y="508" width="160" height="100" rx="6" fill="#ffffff" stroke="#1a73e8" stroke-width="1.5"/>
+  <rect x="60" y="508" width="160" height="22" rx="6" fill="#1a73e8"/>
+  <text x="140" y="523" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">OU=IT</text>
+  <text x="76" y="546" font-size="9" fill="#333">👤 alice.chen</text>
+  <text x="76" y="560" font-size="9" fill="#555">  → IT_Admins</text>
+  <text x="76" y="576" font-size="9" fill="#333">📋 GPO: IT Security Policy</text>
+  <text x="76" y="590" font-size="9" fill="#888">  Screensaver lock enforced</text>
+
+  <!-- Finance OU -->
+  <rect x="248" y="508" width="160" height="100" rx="6" fill="#ffffff" stroke="#fbbc04" stroke-width="1.5"/>
+  <rect x="248" y="508" width="160" height="22" rx="6" fill="#fbbc04"/>
+  <text x="328" y="523" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">OU=Finance</text>
+  <text x="264" y="546" font-size="9" fill="#333">👤 bob.patel</text>
+  <text x="264" y="560" font-size="9" fill="#555">  → Finance_Users</text>
+
+  <!-- HR OU -->
+  <rect x="436" y="508" width="160" height="100" rx="6" fill="#ffffff" stroke="#ea4335" stroke-width="1.5"/>
+  <rect x="436" y="508" width="160" height="22" rx="6" fill="#ea4335"/>
+  <text x="516" y="523" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">OU=HR</text>
+  <text x="452" y="546" font-size="9" fill="#333">👤 carol.jones</text>
+  <text x="452" y="560" font-size="9" fill="#555">  → HR_Users</text>
+
+  <!-- Sales OU -->
+  <rect x="624" y="508" width="160" height="100" rx="6" fill="#ffffff" stroke="#ff6d00" stroke-width="1.5"/>
+  <rect x="624" y="508" width="160" height="22" rx="6" fill="#ff6d00"/>
+  <text x="704" y="523" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">OU=Sales</text>
+  <text x="640" y="546" font-size="9" fill="#333">👤 david.smith</text>
+  <text x="640" y="560" font-size="9" fill="#555">  → Sales_Users</text>
+
+  <!-- Connector lines: domain root → OUs -->
+  <line x1="460" y1="482" x2="460" y2="500" stroke="#34a853" stroke-width="1.5"/>
+  <line x1="140" y1="500" x2="784" y2="500" stroke="#34a853" stroke-width="1.5"/>
+  <line x1="140" y1="500" x2="140" y2="508" stroke="#1a73e8" stroke-width="1.5"/>
+  <line x1="328" y1="500" x2="328" y2="508" stroke="#fbbc04" stroke-width="1.5"/>
+  <line x1="516" y1="500" x2="516" y2="508" stroke="#ea4335" stroke-width="1.5"/>
+  <line x1="704" y1="500" x2="704" y2="508" stroke="#ff6d00" stroke-width="1.5"/>
+
+  <!-- Arrow: VM → AD domain (vertical connector between sections) -->
+  <line x1="308" y1="356" x2="460" y2="448" stroke="#34a853" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrowGreen)"/>
+  <text x="348" y="408" font-size="9" fill="#34a853" font-weight="600">Hosts AD DS</text>
+
+  <!-- Defs for arrowheads -->
+  <defs>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#34a853"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#9c27b0"/>
+    </marker>
+  </defs>
+
+</svg>

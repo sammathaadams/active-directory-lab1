@@ -28,6 +28,8 @@ Organizations rely on Active Directory as the backbone of identity and access ma
 
 ## Architecture
 
+![Architecture Diagram](diagrams/architecture.svg)
+
 | Resource | Name | Type |
 |---|---|---|
 | Resource Group | `rg-lab01-0626` | Azure Resource Group |
