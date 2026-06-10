@@ -105,18 +105,18 @@ Import-Module GroupPolicy
 $GPO = New-GPO -Name "IT Security Policy" -Comment "Automated Corporate IT OU Baseline Security Configuration"
 
 # Link the new GPO container straight to the IT department's organizational unit target path
-New-GPLink -Name "IT Security Policy" -Target "OU=IT,DC=lab,DC=local"
+New-GPLink -Guid $GPO.Id -Target "OU=IT,DC=lab,DC=local"
 
 # Inject administrative registry keys into the GPO to force a 15-minute (900 seconds) locked screensaver timeout
-Set-GPRegistryValue -Name "IT Security Policy" `
+Set-GPRegistryValue -Guid $GPO.Id `
     -Key "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" `
     -ValueName "ScreenSaveActive" -Type String -Value "1"
 
-Set-GPRegistryValue -Name "IT Security Policy" `
+Set-GPRegistryValue -Guid $GPO.Id `
     -Key "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" `
     -ValueName "ScreenSaverIsSecure" -Type String -Value "1"
 
-Set-GPRegistryValue -Name "IT Security Policy" `
+Set-GPRegistryValue -Guid $GPO.Id `
     -Key "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" `
     -ValueName "ScreenSaveTimeOut" -Type String -Value "900"
 
